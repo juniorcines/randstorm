@@ -4,8 +4,6 @@ from multiprocessing import Pool
 import coincurve
 import hashlib
 import base58
-from rich.console import Console
-console = Console()
 # =========================================================================================
 Randstorm = '''
 
@@ -17,7 +15,10 @@ Randstorm = '''
 ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝
 '''
 # =========================================================================================
-console.print(Randstorm)
+print(Randstorm)
+
+target_address = "1NUhcfvRthmvrHf1PAJKe5uEzBGK44ASBD"
+start_time = time.time()
 
 class SecureRandom:
     def __init__(self, seed):
@@ -118,12 +119,8 @@ if __name__ == '__main__':
     # Set the number of parallel processes (cores) to use
     num_processes = 6
     
-    target_address = "1NUhcfvRthmvrHf1PAJKe5uEzBGK44ASBD"
-
     # Display the target address at the beginning
     print(f"Searching for: \033[93m{target_address}\033[0m\n")
-
-    start_time = time.time()
 
     # Use multiprocessing.Pool to parallelize the generation of random keys
     with Pool(num_processes) as pool:
